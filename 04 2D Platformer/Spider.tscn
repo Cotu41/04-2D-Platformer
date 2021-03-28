@@ -1,0 +1,38 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://1bitplatformerpack/Tilemap/monochrome_tilemap_transparent.png" type="Texture" id=1]
+[ext_resource path="res://Spider.gd" type="Script" id=2]
+
+[sub_resource type="AtlasTexture" id=1]
+atlas = ExtResource( 1 )
+region = Rect2( 88.7015, 272.124, 9.38139, 19.9194 )
+
+[sub_resource type="AtlasTexture" id=2]
+atlas = ExtResource( 1 )
+region = Rect2( 87.5449, 292.429, 11.1806, 9.76694 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 5.40916, 4.54391 )
+
+[node name="Spider" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 0.474384, 25.7672 )
+texture = SubResource( 1 )
+
+[node name="Sprite3" type="Sprite" parent="Sprite"]
+position = Vector2( -0.078743, -18.8201 )
+texture = SubResource( 1 )
+
+[node name="Sprite2" type="Sprite" parent="Sprite"]
+position = Vector2( -0.111366, 13.0823 )
+texture = SubResource( 2 )
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2( 0.47438, -7.83279 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2( -0.104752, 46.6513 )
+shape = SubResource( 3 )
+[connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]

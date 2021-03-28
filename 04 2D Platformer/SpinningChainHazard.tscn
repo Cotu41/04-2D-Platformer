@@ -1,0 +1,35 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://1bitplatformerpack/Tilemap/monochrome_tilemap_transparent.png" type="Texture" id=1]
+[ext_resource path="res://SpinningChainHazard.gd" type="Script" id=2]
+
+[sub_resource type="AtlasTexture" id=1]
+atlas = ExtResource( 1 )
+region = Rect2( 55.0459, 0.0962677, 7.94418, 47.0649 )
+
+[sub_resource type="AtlasTexture" id=2]
+atlas = ExtResource( 1 )
+region = Rect2( 102.171, -0.444683, 15.4215, 15.807 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 3.54071, 23.368 )
+
+[node name="SpinningChain" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 0, 23.466 )
+texture = SubResource( 1 )
+
+[node name="Sprite2" type="Sprite" parent="Sprite"]
+position = Vector2( 0, 22.9936 )
+texture = SubResource( 2 )
+
+[node name="Tween" type="Tween" parent="."]
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2( 0.117973, 30.3412 )
+shape = SubResource( 3 )
+[connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
